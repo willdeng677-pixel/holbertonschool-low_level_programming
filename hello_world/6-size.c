@@ -1,5 +1,8 @@
 #include <stdio.h>
-
+/**
+ * C program which print different type
+ * return 0 for success
+ */
 int main(void)
 {
 	printf("Size of a char: %lu byte(s)\n", sizeof(char));
