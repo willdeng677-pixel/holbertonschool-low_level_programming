@@ -9,8 +9,8 @@ char c;
 
 for (c = 'a'; c <= 'z'; c++)
 {
-__putchar(c);
+_putchar(c);
 }
 
-__putchar('\n');
+_putchar('\n');
 }
