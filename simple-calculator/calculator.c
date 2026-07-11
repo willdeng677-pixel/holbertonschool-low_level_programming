@@ -66,7 +66,7 @@ scanf("%d", &B);
 /* Adding up A and B values*/
 result = A+B;
 
-/*Printing the added up result*/
+/*Printing the added up A value and B value*/
 printf("#################Addition result########################\n");
 printf("The sum of %d and %d is %d:\n", A, B, result);
 printf("#################Addition result########################\n");
@@ -82,10 +82,26 @@ scanf("%d", &B);
 /* Subtracting A and B values*/
 result = A-B;
 
-/*Printing the added up result*/
+/*Printing the result of subtracting A value from B value*/
 printf("#################Subtraction result########################\n");
-printf("The sum of %d and %d is %d:\n", A, B, result);
+printf("The Subtraction of %d and %d is %d:\n", A, B, result);
 printf("#################Subtraction result########################\n");
 
+/*============Multiplication=======================*/
+/* ask user to input the value of A */
+printf("Please enter an integer number value of A:\n");
+scanf("%d", &A);
+
+/* ask user to input the value of B */
+printf("Please enter an integer number value of B:\n");
+scanf("%d", &B);
+
+/* Multiplying A and B values*/
+result = A * B;
+
+/*Printing the Multiplication A value and B value*/
+printf("#################Multiplication result########################\n");
+printf("The Multiplication of %d and %d is %d:\n", A, B, result);
+printf("#################Multiplication  result########################\n");
 return (0);
 }
