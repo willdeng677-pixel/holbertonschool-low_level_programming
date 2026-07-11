@@ -3,6 +3,9 @@
 int main(void)
 {
 int choice;
+int A;
+int B;
+int result;
 
 printf("==========================================\n");
 printf(" Welcome to Simple Calculation\n");
@@ -51,6 +54,38 @@ else
 printf("Invalid menu option! Please enter an integer from 1...4 or 0 to quit.\n");
 }
 }
+/*============Addition=======================*/
+/* ask user to input the value of A */
+printf("Please enter an integer number value of A:\n");
+scanf("%d", &A);
+
+/* ask user to input the value of B */
+printf("Please enter an integer number value of B:\n");
+scanf("%d", &B);
+
+/* Adding up A and B values*/
+result = A+B;
+
+/*Printing the added up result*/
+printf("#################Addition result########################\n");
+printf("The sum of %d and %d is %d:\n", A, B, result);
+printf("#################Addition result########################\n");
+/*=============Subtraction=================*/
+/* ask user to input the value of A */
+printf("Please enter an integer number value of A:\n");
+scanf("%d", &A);
+
+/* ask user to input the value of B */
+printf("Please enter an integer number value of B:\n");
+scanf("%d", &B);
+
+/* Subtracting A and B values*/
+result = A-B;
+
+/*Printing the added up result*/
+printf("#################Subtraction result########################\n");
+printf("The sum of %d and %d is %d:\n", A, B, result);
+printf("#################Subtraction result########################\n");
 
 return (0);
 }
