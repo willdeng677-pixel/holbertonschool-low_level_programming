@@ -1,12 +1,16 @@
+#include <stdio.h>
 #include "main.h"
-/**
- * reset_to_98 which update the value pointed to by n to 98
- * poiter variable of type integer
- */
 
-void reset_to_98(int *n)
+int main(void)
 {
+int n;
+n = 402;
 
-*n = 98;
+printf("Before: %d\n", n);
 
+reset_to_98(&n);
+
+printf("After: %d\n", n);
+
+return (0);
 }
