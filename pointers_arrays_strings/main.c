@@ -1,25 +1,6 @@
-#include <stdio.h>
-#include "main.h"
+#ifndef MAIN_H
+#define MAIN_H
 
-/**
- * reset_to_98 - updates the value pointed to by n to 98
- * @n: pointer to an integer
- */
+void swap_int(int *a, int *b);
 
-void reset_to_98(int *n)
-{
-    *n = 98;
-}
-
-int main(void)
-{
-int n = 402;
-
-printf("Before: %d\n", n);
-
-reset_to_98(&n);
-
-printf("After: %d\n", n);
-
-return (0);
-}
+#endif
