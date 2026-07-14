@@ -1,29 +1,28 @@
 #include <stdio.h>
 #include <time.h>
 
-#define ITERATION_COUNT 100000000UL
-
 int main(void)
 {
-    volatile unsigned long long result;
-    clock_t start;
-    clock_t end;
-    double elapsed;
-    unsigned long i;
+const long ITERATIONS = 100000000;
+volatile long long sum = 0;   /* volatile prevents optimization */
 
-    result = 0;
+clock_t start, end;
+double cpu_time;
 
-    start = clock();
+start = clock();
 
-    for (i = 0; i < ITERATION_COUNT; i++)
-        result += (unsigned long long)(i % 3);
+/* Deterministic computation */
+for (long i = 1; i <= ITERATIONS; i++)
+{
+	sum += i;
+}
 
-    end = clock();
+end = clock();
 
-    elapsed = (double)(end - start) / (double)CLOCKS_PER_SEC;
+cpu_time = (double)(end - start) / CLOCKS_PER_SEC;
 
-    printf("Iterations: %lu\n", (unsigned long)ITERATION_COUNT);
-    printf("Execution time: %.6f seconds\n", elapsed);
+printf("Result = %lld\n", sum);
+printf("Execution time = %.6f seconds\n", cpu_time);
 
-    return 0;
+return 0;
 }
