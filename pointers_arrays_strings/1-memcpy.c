@@ -1,30 +1,21 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * simple_print_buffer: prints memory buffer 
- * buffer: the address in the memory to be print
+ * _memcpy function copy memory area
+ * dest: destination of the copy memory area
+ * src: source of memory area
  *
- * return: zero for success 
+ * return: pointer to destination
  */
 
- void simple_print_buffer(char *buffer, unsigned int size)
- {
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
 	unsigned int i;
-	i = 0;
 
-	while (i < size)
+	for (i = 0; i < n; i++)
 	{
-		if (i % 10)
-		{
-			printf (" ");
-		}
-		if (!(i % 10) && i)
-		{
-			printf("\n");
-		}
-		printf("0x%02x", buffer[i]);
-		i++;
+		dest[i] = arc[i];
 	}
-	printf("\n");
- }
+
+	return (dest);
+}
