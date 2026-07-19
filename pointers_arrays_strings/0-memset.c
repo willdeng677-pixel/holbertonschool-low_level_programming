@@ -1,4 +1,8 @@
 #include "main.h"
+/**
+ * _memset: output buffer address
+ * return: zero 
+ */
 
 char *_memset(char *s, char b, unsigned int n)
 {
