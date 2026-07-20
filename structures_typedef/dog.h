@@ -1,23 +1,17 @@
-#include <stdio.h>
-#include "dog.h"
+#ifndef DOG_H
+#define DOG_H
 
 /**
- * main - Entry point
- *
- * Return: Always 0.
+ * struct dog - stores information about a dog
+ * @name: dog's name
+ * @age: dog's age
+ * @owner: dog's owner
  */
-
-int main(void)
+struct dog
 {
-struct dog my_dog;
+	char *name;
+	float age;
+	char *owner;
+};
 
-my_dog.name = "Buddy";
-my_dog.age = 3.5;
-my_dog.owner = "William";
-
-printf("Name: %s\n", my_dog.name);
-printf("Age: %.1f\n", my_dog.age);
-printf("Owner: %s\n", my_dog.owner);
-
-return (0);
-}
+#endif /* DOG_H */
