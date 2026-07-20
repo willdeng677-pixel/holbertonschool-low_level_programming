@@ -3,11 +3,20 @@
 
 int main(void)
 {
-	struct dog my_dog;
+	dog_t *my_dog;
 
-	init_dog(&my_dog, "Buddy", 3.5, "William");
+	my_dog = new_dog("Buddy", 3.5, "William");
 
-	printf("Ok\n");
+	if (my_dog != NULL)
+	{
+		printf("Name: %s\n", my_dog->name);
+		printf("Age: %.1f\n", my_dog->age);
+		printf("Owner: %s\n", my_dog->owner);
+	}
+
+	free(my_dog->name);
+	free(my_dog->owner);
+	free(my_dog);
 
 	return (0);
 }
