@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include "dog.h"
 
 /**
  * main - Entry point
  *
  * Return: Always 0.
  */
+
 int main(void)
 {
 struct dog my_dog;
