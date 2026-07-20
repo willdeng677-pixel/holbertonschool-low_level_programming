@@ -1,23 +1,6 @@
 #include <stdio.h>
+#include "dog.h"
 
-/**
- * struct dog - Defines a dog
- * @name: Pointer to the dog's name
- * @age: The dog's age
- * @owner: Pointer to the owner's name
- */
-struct dog
-{
-char *name;
-float age;
-char *owner;
-};
-
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
 int main(void)
 {
 struct dog my_dog;
