@@ -5,13 +5,9 @@ int main(void)
 {
 	struct dog my_dog;
 
-	my_dog.name = "Buddy";
-	my_dog.age = 3.5;
-	my_dog.owner = "William";
+	init_dog(&my_dog, "Buddy", 3.5, "William");
 
-	printf("Name: %s\n", my_dog.name);
-	printf("Age: %.1f\n", my_dog.age);
-	printf("Owner: %s\n", my_dog.owner);
+	printf("Ok\n");
 
 	return (0);
 }
