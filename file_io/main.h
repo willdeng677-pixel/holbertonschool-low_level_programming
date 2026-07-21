@@ -1,8 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
+
 #include <unistd.h>
-#include <stddef.h>
+#include <fcntl.h>
 #include <sys/types.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
  * read_textfile - reads a text file and prints it to POSIX stdout
