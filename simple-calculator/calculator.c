@@ -13,7 +13,8 @@ printf("2. Subtraction\n");
 printf("3. Multiplication\n");
 printf("4. Division\n");
 printf("0. Quit\n");
-printf("Enter your choice: ");
+
+printf("Please enter your choice of mathmetical operator: ");
 
 check = scanf("%d", &choice);
 
