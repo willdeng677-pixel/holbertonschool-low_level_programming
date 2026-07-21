@@ -48,6 +48,8 @@ printf("You have selected Multiplication.\n");
 else if (choice == 4)
 {
 printf("You have selected Division.\n");
+printf("Please enter an integer number value of A:\n");
+scanf("%d", &A);
 if (B == 0)
 {
 printf("Invalid! Cannot divide by zero.\n");
