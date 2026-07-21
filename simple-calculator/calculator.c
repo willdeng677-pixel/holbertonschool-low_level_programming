@@ -47,12 +47,12 @@ printf("You have selected Multiplication.\n");
 }
 else if (choice == 4)
 {
+printf("You have selected Division.\n");
 if (B == 0)
 {
 printf("Invalid! Cannot divide by zero.\n");
 printf("Please try again.\n\n");
 }
-printf("You have selected Division.\n");
 }
 else 
 {
