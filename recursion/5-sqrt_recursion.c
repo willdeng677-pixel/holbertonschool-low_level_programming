@@ -1,4 +1,4 @@
-i#include "main.h"
+#include "main.h"
 
 /**
  * sqrt_helper - finds the natural square root of a number
