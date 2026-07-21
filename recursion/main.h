@@ -14,5 +14,7 @@ int prime_helper(int n, int divisor);
 int is_palindrome(char *s);
 int _strlen_recursion(char *s);
 int palindrome_helper(char *s, int left, int right);
+int wildcmp(char *s1, char *s2);
+int wildcmp_helper(char *s1, char *s2);
 
 #endif
