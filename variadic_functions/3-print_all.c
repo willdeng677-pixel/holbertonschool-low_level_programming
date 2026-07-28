@@ -2,8 +2,59 @@
 #include <stdio.h>
 
 /**
+ * print_char - prints a character
+ * @args: argument list
+ *
+ * Return: Nothing
+ */
+void print_char(va_list args)
+{
+	printf("%c", va_arg(args, int));
+}
+
+/**
+ * print_integer - prints an integer
+ * @args: argument list
+ *
+ * Return: Nothing
+ */
+void print_integer(va_list args)
+{
+	printf("%d", va_arg(args, int));
+}
+
+/**
+ * print_float - prints a float
+ * @args: argument list
+ *
+ * Return: Nothing
+ */
+void print_float(va_list args)
+{
+	printf("%f", va_arg(args, double));
+}
+
+/**
+ * print_string - prints a string
+ * @args: argument list
+ *
+ * Return: Nothing
+ */
+void print_string(va_list args)
+{
+	char *str;
+
+	str = va_arg(args, char *);
+
+	if (str == NULL)
+		printf("(nil)");
+	else
+		printf("%s", str);
+}
+
+/**
  * print_all - prints anything
- * @format: list of types of arguments
+ * @format: list of types
  *
  * Return: Nothing
  */
@@ -12,30 +63,26 @@ void print_all(const char * const format, ...)
 	va_list args;
 	unsigned int i = 0;
 	char *separator = "";
-	char *str;
-
+	
 	va_start(args, format);
 
 	while (format != NULL && format[i] != '\0')
 	{
 		if (format[i] == 'c')
-			printf("%s%c", separator, va_arg(args, int));
+		print_char(args);
 
 		if (format[i] == 'i')
-			printf("%s%d", separator, va_arg(args, int));
+		print_integer(args);
 
 		if (format[i] == 'f')
-			printf("%s%f", separator, va_arg(args, double));
+		print_float(args);
 
 		if (format[i] == 's')
-		{
-			str = va_arg(args, char *);
+		print_string(args);
 
-			printf("%s%s", separator,
-				str == NULL ? "(nil)" : str);
-		}
-
+		printf("%s", separator);
 		separator = ", ";
+
 		i++;
 	}
 
