@@ -10,5 +10,6 @@
  * Return: sum of all arguments, or 0 if n is 0
  */
 int sum_them_all(const unsigned int n, ...);
+void print_numbers(const char *separator, const unsigned int n, ...);
 
 #endif
