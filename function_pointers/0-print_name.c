@@ -1,12 +1,26 @@
 #include "function_pointers.h"
 
-/**
- * print_name - prints a name using a function pointer
- * @name: pointer to the name
- * @f: function pointer used to print the name
- */
-void print_name(char *name, void (*f)(char *))
+#include <stdio.h>
+
+void print_normal(char *name)
 {
-if (name != NULL && f != NULL)
-f(name);
+    printf("%s\n", name);
+}
+
+void print_upper(char *name)
+{
+    while (*name)
+    {
+        putchar(*name >= 'a' && *name <= 'z' ? *name - 32 : *name);
+        name++;
+    }
+    putchar('\n');
+}
+
+int main(void)
+{
+    print_name("William", print_normal);
+    print_name("William", print_upper);
+
+    return (0);
 }
