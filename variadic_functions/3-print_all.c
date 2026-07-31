@@ -3,27 +3,30 @@
 #include "variadic_functions.h"
 
 /**
- * print_char - prints a char
- * @*ap: pointer of type va_list
+ * print_char - prints a character
+ * @ap: pointer to the variable argument list
  */
+
 void print_char(va_list *ap)
 {
 	printf("%c", va_arg(*ap, int));
 }
 
 /**
- * print_int - prints an int
- * @*ap: pointer of type va_list
+ * print_int - prints an integer
+ * @ap: pointer to the variable argument list
  */
+
 void print_int(va_list *ap)
 {
 	printf("%d", va_arg(*ap, int));
 }
 
 /**
- * print_float - prints a float
- * @ap: pointer of type va_list
+ * print_float - prints a floating-point number
+ * @ap: pointer to the variable argument list
  */
+
 void print_float(va_list *ap)
 {
 	printf("%f", va_arg(*ap, double));
@@ -31,8 +34,9 @@ void print_float(va_list *ap)
 
 /**
  * print_string - prints a string
+ * @ap: pointer to the variable argument list
+ */
 
-*/
 void print_string(va_list *ap)
 {
 	char *str;
@@ -46,10 +50,10 @@ void print_string(va_list *ap)
 }
 
 /**
- * print_all - prints anything
- * @format: list of argument types
- * @char: pointer of type constant
+ * print_all - prints values according to a format string
+ * @format: list of argument type specifiers
  */
+
 void print_all(const char * const format, ...)
 {
 	int i = 0, j;
