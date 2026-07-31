@@ -1,6 +1,3 @@
-#ifndef PRINT_ALL_H
-#define PRINT_ALL_H
-
 #ifndef VARIADIC_FUNCTIONS_H
 #define VARIADIC_FUNCTIONS_H
 
