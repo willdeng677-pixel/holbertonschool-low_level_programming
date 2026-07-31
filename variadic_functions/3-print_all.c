@@ -31,7 +31,7 @@ void print_float(va_list *ap)
 
 /**
  * print_string - prints a string
- * @ap: pointer of type va_list 
+ 
  */
 void print_string(va_list *ap)
 {
