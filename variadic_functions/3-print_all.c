@@ -4,6 +4,7 @@
 
 /**
  * print_char - prints a char
+ * @*ap: pointer of type va_list
  */
 void print_char(va_list *ap)
 {
@@ -12,6 +13,7 @@ void print_char(va_list *ap)
 
 /**
  * print_int - prints an int
+ * @*ap: pointer of type va_list
  */
 void print_int(va_list *ap)
 {
@@ -20,6 +22,7 @@ void print_int(va_list *ap)
 
 /**
  * print_float - prints a float
+ * @*ap: pointer of type va_list
  */
 void print_float(va_list *ap)
 {
@@ -28,6 +31,7 @@ void print_float(va_list *ap)
 
 /**
  * print_string - prints a string
+ * @*ap: pointer of type va_list 
  */
 void print_string(va_list *ap)
 {
@@ -44,6 +48,7 @@ void print_string(va_list *ap)
 /**
  * print_all - prints anything
  * @format: list of argument types
+ * @char: pointer of type constant
  */
 void print_all(const char * const format, ...)
 {
