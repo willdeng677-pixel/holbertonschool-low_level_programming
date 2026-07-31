@@ -22,7 +22,7 @@ void print_int(va_list *ap)
 
 /**
  * print_float - prints a float
- * @*ap: pointer of type va_list
+ * @ap: pointer of type va_list
  */
 void print_float(va_list *ap)
 {
