@@ -31,8 +31,8 @@ void print_float(va_list *ap)
 
 /**
  * print_string - prints a string
- 
- */
+
+*/
 void print_string(va_list *ap)
 {
 	char *str;
