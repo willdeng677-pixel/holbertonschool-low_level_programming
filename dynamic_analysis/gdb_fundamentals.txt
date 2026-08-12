@@ -1,16 +1,3 @@
-Line 1  TAG_ACC (32-bit)
-
-Inside derive_key(...)
-The value of x before the code combines the accumulator with user_pin
-and g_state is:
-  
-int x = 0x13579bdf
-
-Line 2  KEY (32-bit)
-Still inside the derive_key(...)
-The immediate before the function return, the value return by
-derive_key(...) hold in local variable x = 0x449bc842
-
-Line 3  ACC_AFTER_I0 (32-bit)
-Inside function compute_target(...)
-The value held by acc = 0x31415926
+Line 1 TAG_ACC: 0xF2EF340B
+Line 2 KEY: 0x449BC842
+Line 3 ACC_AFTER_I0: 0x65735AA6
