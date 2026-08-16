@@ -1,3 +1,4 @@
+```c
 #include <stdlib.h>
 #include <string.h>
 #include "store.h"
@@ -10,8 +11,10 @@
  */
 void store_init(store_t *st)
 {
-	if (st != NULL)
-		st->head = NULL;
+	if (st == NULL)
+		return;
+
+	st->head = NULL;
 }
 
 /**
@@ -23,6 +26,9 @@ void store_init(store_t *st)
 static node_t *node_create(session_t *s)
 {
 	node_t *n;
+
+	if (s == NULL)
+		return (NULL);
 
 	n = malloc(sizeof(*n));
 	if (n == NULL)
@@ -43,18 +49,21 @@ static node_t *node_create(session_t *s)
  */
 int store_add(store_t *st, session_t *s)
 {
-	node_t *n;
 	node_t *cur;
+	node_t *n;
 
 	if (st == NULL || s == NULL || s->id == NULL)
 		return (0);
 
 	cur = st->head;
+
 	while (cur != NULL)
 	{
-		if (cur->sess != NULL && cur->sess->id != NULL &&
-			strcmp(cur->sess->id, s->id) == 0)
-			return (0);
+		if (cur->sess != NULL && cur->sess->id != NULL)
+		{
+			if (strcmp(cur->sess->id, s->id) == 0)
+				return (0);
+		}
 
 		cur = cur->next;
 	}
@@ -84,11 +93,14 @@ session_t *store_get(store_t *st, const char *id)
 		return (NULL);
 
 	cur = st->head;
+
 	while (cur != NULL)
 	{
-		if (cur->sess != NULL && cur->sess->id != NULL &&
-			strcmp(cur->sess->id, id) == 0)
-			return (cur->sess);
+		if (cur->sess != NULL && cur->sess->id != NULL)
+		{
+			if (strcmp(cur->sess->id, id) == 0)
+				return (cur->sess);
+		}
 
 		cur = cur->next;
 	}
@@ -100,7 +112,7 @@ session_t *store_get(store_t *st, const char *id)
  * store_delete - removes a session from the store
  * @st: store
  * @id: session ID
- * @out: pointer to receive the removed session
+ * @out: receives the removed session
  *
  * Return: 1 if successful, 0 otherwise
  */
@@ -112,26 +124,39 @@ int store_delete(store_t *st, const char *id, session_t **out)
 	if (st == NULL || id == NULL)
 		return (0);
 
+	if (out != NULL)
+		*out = NULL;
+
 	prev = NULL;
 	cur = st->head;
 
 	while (cur != NULL)
 	{
-		if (cur->sess != NULL && cur->sess->id != NULL &&
-			strcmp(cur->sess->id, id) == 0)
+		if (cur->sess != NULL && cur->sess->id != NULL)
 		{
-			if (prev != NULL)
-				prev->next = cur->next;
-			else
-				st->head = cur->next;
+			if (strcmp(cur->sess->id, id) == 0)
+			{
+				if (prev == NULL)
+					st->head = cur->next;
+				else
+					prev->next = cur->next;
 
-			if (out != NULL)
-				*out = cur->sess;
-			else
-				session_destroy(cur->sess);
+				/*
+				 * Transfer ownership of the session to the caller.
+				 * The caller must call session_destroy() on *out.
+				 */
+				if (out != NULL)
+				{
+					*out = cur->sess;
+				}
+				else
+				{
+					session_destroy(cur->sess);
+				}
 
-			free(cur);
-			return (1);
+				free(cur);
+				return (1);
+			}
 		}
 
 		prev = cur;
@@ -161,7 +186,9 @@ void store_destroy(store_t *st)
 	{
 		next = cur->next;
 
-		session_destroy(cur->sess);
+		if (cur->sess != NULL)
+			session_destroy(cur->sess);
+
 		free(cur);
 
 		cur = next;
@@ -169,3 +196,5 @@ void store_destroy(store_t *st)
 
 	st->head = NULL;
 }
+```
+
