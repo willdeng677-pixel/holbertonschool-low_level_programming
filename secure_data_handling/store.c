@@ -4,7 +4,7 @@
 
 /**
  * store_init - initializes a store
- * @st: store to initialize
+ * @st: store
  *
  * Return: nothing
  */
@@ -16,9 +16,9 @@ void store_init(store_t *st)
 
 /**
  * node_create - creates a store node
- * @s: session to store
+ * @s: session
  *
- * Return: pointer to new node, or NULL if it fails
+ * Return: pointer to new node, or NULL on failure
  */
 static node_t *node_create(session_t *s)
 {
@@ -40,9 +40,9 @@ static node_t *node_create(session_t *s)
 /**
  * store_add - adds a session to the store
  * @st: store
- * @s: session to add
+ * @s: session
  *
- * Return: 1 if successful, 0 otherwise
+ * Return: 1 on success, 0 on failure
  */
 int store_add(store_t *st, session_t *s)
 {
@@ -76,11 +76,11 @@ int store_add(store_t *st, session_t *s)
 }
 
 /**
- * store_get - retrieves a session by ID
+ * store_get - gets a session by ID
  * @st: store
  * @id: session ID
  *
- * Return: session pointer, or NULL if not found
+ * Return: session pointer, or NULL
  */
 session_t *store_get(store_t *st, const char *id)
 {
@@ -106,12 +106,12 @@ session_t *store_get(store_t *st, const char *id)
 }
 
 /**
- * store_delete - removes a session from the store
+ * store_delete - removes and destroys a session
  * @st: store
  * @id: session ID
- * @out: receives the removed session
+ * @out: optional pointer receiving NULL
  *
- * Return: 1 if successful, 0 otherwise
+ * Return: 1 on success, 0 on failure
  */
 int store_delete(store_t *st, const char *id, session_t **out)
 {
@@ -139,23 +139,11 @@ int store_delete(store_t *st, const char *id, session_t **out)
 					prev->next = cur->next;
 
 				/*
-				 * If the caller supplied out, transfer ownership
-				 * of the session to the caller.
+				 * The store owns the session.
+				 * Destroy it before freeing the node.
 				 */
-				if (out != NULL)
-				{
-					*out = cur->sess;
-				}
-				else
-				{
-					/*
-					 * No caller receives the session,
-					 * so destroy it here.
-					 */
-					session_destroy(cur->sess);
-				}
+				session_destroy(cur->sess);
 
-				/* The node is always owned by the store. */
 				free(cur);
 
 				return (1);
@@ -170,7 +158,7 @@ int store_delete(store_t *st, const char *id, session_t **out)
 }
 
 /**
- * store_destroy - destroys a store and all its sessions
+ * store_destroy - destroys the store
  * @st: store
  *
  * Return: nothing
