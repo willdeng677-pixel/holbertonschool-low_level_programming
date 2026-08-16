@@ -1,0 +1,8 @@
+SET username william
+GET username
+GET password
+SET password secret
+GET password
+DEL username
+GET username
+
