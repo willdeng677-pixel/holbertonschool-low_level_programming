@@ -1,4 +1,3 @@
-```c
 #include <stdlib.h>
 #include <string.h>
 #include "store.h"
@@ -196,5 +195,4 @@ void store_destroy(store_t *st)
 
 	st->head = NULL;
 }
-```
 
