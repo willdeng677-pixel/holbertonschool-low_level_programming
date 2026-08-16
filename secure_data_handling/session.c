@@ -9,7 +9,7 @@
  * @data: session data
  * @data_len: length of session data
  *
- * Return: pointer to the new session, or NULL if it fails
+ * Return: pointer to new session, or NULL on failure
  */
 session_t *session_create(const char *id, unsigned int uid,
 			  const unsigned char *data, size_t data_len)
@@ -103,7 +103,7 @@ int session_set_data(session_t *s, const unsigned char *data,
 
 /**
  * session_destroy - destroys a session
- * @s: session to destroy
+ * @s: session
  *
  * Return: nothing
  */
