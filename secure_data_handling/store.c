@@ -10,10 +10,8 @@
  */
 void store_init(store_t *st)
 {
-	if (st == NULL)
-		return;
-
-	st->head = NULL;
+	if (st != NULL)
+		st->head = NULL;
 }
 
 /**
@@ -48,8 +46,8 @@ static node_t *node_create(session_t *s)
  */
 int store_add(store_t *st, session_t *s)
 {
-	node_t *cur;
 	node_t *n;
+	node_t *cur;
 
 	if (st == NULL || s == NULL || s->id == NULL)
 		return (0);
@@ -141,8 +139,8 @@ int store_delete(store_t *st, const char *id, session_t **out)
 					prev->next = cur->next;
 
 				/*
-				 * Transfer ownership of the session to the caller.
-				 * The caller must call session_destroy() on *out.
+				 * If the caller supplied out, transfer ownership
+				 * of the session to the caller.
 				 */
 				if (out != NULL)
 				{
@@ -150,10 +148,16 @@ int store_delete(store_t *st, const char *id, session_t **out)
 				}
 				else
 				{
+					/*
+					 * No caller receives the session,
+					 * so destroy it here.
+					 */
 					session_destroy(cur->sess);
 				}
 
+				/* The node is always owned by the store. */
 				free(cur);
+
 				return (1);
 			}
 		}
@@ -195,4 +199,3 @@ void store_destroy(store_t *st)
 
 	st->head = NULL;
 }
-
