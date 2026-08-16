@@ -2,15 +2,6 @@
 #include <string.h>
 #include "session.h"
 
-/**
- * session_create - creates a new session
- * @id: session ID
- * @uid: user ID
- * @data: session data
- * @data_len: length of session data
- *
- * Return: pointer to new session, or NULL on failure
- */
 session_t *session_create(const char *id, unsigned int uid,
 			  const unsigned char *data, size_t data_len)
 {
@@ -63,14 +54,6 @@ session_t *session_create(const char *id, unsigned int uid,
 	return (s);
 }
 
-/**
- * session_set_data - replaces session data
- * @s: session
- * @data: new data
- * @data_len: length of new data
- *
- * Return: 1 if successful, 0 otherwise
- */
 int session_set_data(session_t *s, const unsigned char *data,
 		     size_t data_len)
 {
@@ -95,18 +78,13 @@ int session_set_data(session_t *s, const unsigned char *data,
 		return (0);
 
 	s->data = tmp;
+
 	memcpy(s->data, data, data_len);
 	s->data_len = data_len;
 
 	return (1);
 }
 
-/**
- * session_destroy - destroys a session
- * @s: session
- *
- * Return: nothing
- */
 void session_destroy(session_t *s)
 {
 	if (s == NULL)
