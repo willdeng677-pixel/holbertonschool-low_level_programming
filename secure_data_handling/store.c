@@ -2,24 +2,12 @@
 #include <string.h>
 #include "store.h"
 
-/**
- * store_init - initializes a store
- * @st: store
- *
- * Return: nothing
- */
 void store_init(store_t *st)
 {
 	if (st != NULL)
 		st->head = NULL;
 }
 
-/**
- * node_create - creates a store node
- * @s: session
- *
- * Return: pointer to new node, or NULL on failure
- */
 static node_t *node_create(session_t *s)
 {
 	node_t *n;
@@ -37,13 +25,6 @@ static node_t *node_create(session_t *s)
 	return (n);
 }
 
-/**
- * store_add - adds a session to the store
- * @st: store
- * @s: session
- *
- * Return: 1 on success, 0 on failure
- */
 int store_add(store_t *st, session_t *s)
 {
 	node_t *n;
@@ -75,13 +56,6 @@ int store_add(store_t *st, session_t *s)
 	return (1);
 }
 
-/**
- * store_get - gets a session by ID
- * @st: store
- * @id: session ID
- *
- * Return: session pointer, or NULL
- */
 session_t *store_get(store_t *st, const char *id)
 {
 	node_t *cur;
@@ -105,14 +79,6 @@ session_t *store_get(store_t *st, const char *id)
 	return (NULL);
 }
 
-/**
- * store_delete - removes and destroys a session
- * @st: store
- * @id: session ID
- * @out: optional pointer receiving NULL
- *
- * Return: 1 on success, 0 on failure
- */
 int store_delete(store_t *st, const char *id, session_t **out)
 {
 	node_t *cur;
@@ -138,14 +104,16 @@ int store_delete(store_t *st, const char *id, session_t **out)
 				else
 					prev->next = cur->next;
 
-				/*
-				 * The store owns the session.
-				 * Destroy it before freeing the node.
-				 */
-				session_destroy(cur->sess);
+				if (out != NULL)
+				{
+					*out = cur->sess;
+				}
+				else
+				{
+					session_destroy(cur->sess);
+				}
 
 				free(cur);
-
 				return (1);
 			}
 		}
@@ -157,12 +125,6 @@ int store_delete(store_t *st, const char *id, session_t **out)
 	return (0);
 }
 
-/**
- * store_destroy - destroys the store
- * @st: store
- *
- * Return: nothing
- */
 void store_destroy(store_t *st)
 {
 	node_t *cur;
